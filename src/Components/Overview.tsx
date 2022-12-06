@@ -20,24 +20,26 @@ const Overview = () => {
     <div>
       {allEvents.map((el) => (
         <div key={el}>
-          <p className="bg-red">
-            {
-              Info.weekdays('short', { locale: 'en-EN' })[
-                new Date(el.dateVenue).getDay()
-              ]
-            }
-            <br />
-            {formattedDate(el.dateVenue, 'yyyy-MM-dd')}
-            <br />
-            {el.timeVenueUTC.slice(1, 5)}
-            <br />
-            <span>Football</span>
-            <br />
-            {`${el.homeTeam?.name}-${el.awayTeam.name}`}
-          </p>
+          <div className="grid grid-cols-5 p-3">
+            <div>
+              {
+                Info.weekdays('short', { locale: 'en-EN' })[
+                  new Date(el.dateVenue).getDay()
+                ]
+              }
+            </div>
+
+            <div> {formattedDate(el.dateVenue, 'yyyy-MM-dd')}</div>
+
+            <div> {el.timeVenueUTC.slice(1, 5)}</div>
+
+            <div>Football</div>
+
+            <div> {`${el.homeTeam?.name} - ${el.awayTeam.name}`}</div>
+          </div>
         </div>
       ))}
-      <button>Add Event</button>
+      <button className="border-2">Add Event</button>
     </div>
   );
 };
