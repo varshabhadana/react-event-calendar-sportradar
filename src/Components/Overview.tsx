@@ -34,9 +34,7 @@ const Overview = () => {
 
             <div> {formattedDate(el.dateVenue, 'yyyy-MM-dd')}</div>
 
-            <div> {el.timeVenueUTC.slice(1, 5)}</div>
-
-            <div>Football</div>
+            <div> {el.timeVenueUTC.slice(0, 5)}</div>
 
             <div> {`${el.homeTeam?.name} - ${el.awayTeam.name}`}</div>
           </div>
