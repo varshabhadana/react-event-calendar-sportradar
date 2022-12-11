@@ -1,5 +1,6 @@
 import { DateTime, Info } from 'luxon';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import eventData from '../mockData.json';
 import AddEventModal from './AddEventModal';
 
@@ -23,21 +24,23 @@ const Overview = () => {
     <div className="bg-blue-500 min-h-screen py-12 px-4 sm:px-6 lg:px-8 ">
       {allEvents.map((el) => (
         <div key={el}>
-          <div className="overflow-hidden bg-blue drop-shadow-2xl sm:rounded-lg w-full max-w-lg space-y-8 flex justify-between items-center text-blue-800 p-5 ">
-            <div>
-              {
-                Info.weekdays('short', { locale: 'en-EN' })[
-                  new Date(el.dateVenue).getDay()
-                ]
-              }
+          <Link to={`/details/${el.id}`}>
+            <div className="overflow-hidden bg-blue drop-shadow-2xl sm:rounded-lg w-full max-w-lg space-y-8 flex justify-between items-center text-blue-800 p-5 ">
+              <div>
+                {
+                  Info.weekdays('short', { locale: 'en-EN' })[
+                    new Date(el.dateVenue).getDay()
+                  ]
+                }
+              </div>
+
+              <div> {formattedDate(el.dateVenue, 'yyyy-MM-dd')}</div>
+
+              <div> {el.timeVenueUTC.slice(0, 5)}</div>
+
+              <div> {`${el.homeTeam?.name} - ${el.awayTeam.name}`}</div>
             </div>
-
-            <div> {formattedDate(el.dateVenue, 'yyyy-MM-dd')}</div>
-
-            <div> {el.timeVenueUTC.slice(0, 5)}</div>
-
-            <div> {`${el.homeTeam?.name} - ${el.awayTeam.name}`}</div>
-          </div>
+          </Link>
         </div>
       ))}
       <button
