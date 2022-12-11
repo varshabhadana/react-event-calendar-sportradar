@@ -1,5 +1,5 @@
 import { Label, Modal, TextInput } from 'flowbite-react';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 type Props = {
   openModal: boolean;

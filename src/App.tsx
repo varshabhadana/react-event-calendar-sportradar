@@ -1,12 +1,8 @@
 import './App.css';
-import Overview from './Components/Overview';
+import Overview from './components/Overview';
 
 function App() {
-  return (
-    <div>
-      <Overview />
-    </div>
-  );
+  return <div>{/*    <Overview /> */}</div>;
 }
 
 export default App;

@@ -9,7 +9,7 @@ const Overview = () => {
 
   useEffect(() => {
     const response = eventData.data;
-    console.log(response);
+
     setAllEvents(response);
   }, []);
 
