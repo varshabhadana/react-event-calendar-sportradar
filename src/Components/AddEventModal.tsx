@@ -338,7 +338,7 @@ export default function AddEventModal(props: Props) {
                   <TextInput
                     id="officialName"
                     required={true}
-                    value={form.homeTeam.officialName}
+                    value={form.awayTeam.officialName}
                     onChange={awayTeamHandleChange}
                   />
                 </div>
