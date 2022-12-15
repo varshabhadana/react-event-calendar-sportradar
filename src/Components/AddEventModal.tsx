@@ -1,11 +1,12 @@
 import { Label, Modal, TextInput } from 'flowbite-react';
+import { allowedNodeEnvironmentFlags } from 'process';
 import { useState } from 'react';
 
 type Props = {
   openModal: boolean;
   setOpenModal: any;
   allEvents: any[];
-  setAllEvents: any;
+  setNewEvent: any;
 };
 type FormValues = {
   season: number;
@@ -125,6 +126,7 @@ export default function AddEventModal(props: Props) {
       [event.currentTarget.id]: event.currentTarget.value,
     });
   }
+
   // Handle change for Home team object
   function homeTeamHandleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setFormValues({
@@ -167,7 +169,8 @@ export default function AddEventModal(props: Props) {
   }
   // To add New Event
   async function addNewEventHandler() {
-    props.setAllEvents([...props.allEvents, form]);
+    props.setNewEvent({ ...form, id: String(props.allEvents.length + 1) });
+    console.log('form', form);
     setFormValues(initialFormValues);
     props.setOpenModal(false);
   }
@@ -556,7 +559,7 @@ export default function AddEventModal(props: Props) {
               </div>
             </div>
             <button
-              className="text-lg font-medium text-white dark:text-gray-300 w-5/12 h-22 text-blue-700 dark:text-blue-500  rounded-md border border-transparent bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 p-1 mt-3"
+              className="text-lg font-medium text-white dark:text-gray-300 w-5/12 h-22 text-white dark:text-blue-500  rounded-md border border-transparent bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 p-1 mt-3"
               onClick={addNewEventHandler}
             >
               Add

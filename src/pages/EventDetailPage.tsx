@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import eventData from '../mockData.json';
+import { useEventStore } from '../state/events';
 
 function EventDetailPage() {
   const [singleEventDetails, setSingleEventDetails] = useState<any>();
   const { id } = useParams();
+  const allEvents = useEventStore((state: any) => state.events);
 
   useEffect(() => {
-    const response = eventData.data;
-
-    const singleEvent = response.find((el) => {
-      return el.id === id;
-    });
-
+    console.log(allEvents);
+    console.log(id);
+    const singleEvent = allEvents.find((el: any) => el.id === id);
+    console.log(singleEvent);
     setSingleEventDetails(singleEvent);
   }, [id]);
 
@@ -20,7 +19,7 @@ function EventDetailPage() {
     <div className="bg-slate-200 h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center h-full">
       <div className="overflow-hidden bg-white drop-shadow-lg sm:rounded-lg w-6/12 h-auto p-5 text-lg font-mediumleading-6 text-gray-900 ">
         {singleEventDetails && (
-          <>
+          <div>
             <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
               <h3 className="text-lg  leading-6 text-gray-900">
                 Event Details
@@ -97,7 +96,7 @@ function EventDetailPage() {
                 {singleEventDetails.originCompetitionName}
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>

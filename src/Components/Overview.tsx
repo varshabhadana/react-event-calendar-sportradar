@@ -1,18 +1,13 @@
 import { DateTime, Info } from 'luxon';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import eventData from '../mockData.json';
+import { useEventStore } from '../state/events';
 import AddEventModal from './AddEventModal';
 
 const Overview = () => {
-  const [allEvents, setAllEvents] = useState<Array<any>>([]);
+  const allEvents = useEventStore((state: any) => state.events);
+  const setNewEvent = useEventStore((state: any) => state.addNewEvent);
   const [openModal, setOpenModal] = useState<boolean>(false);
-
-  useEffect(() => {
-    const response = eventData.data;
-
-    setAllEvents(response);
-  }, []);
 
   const formattedDate = (date: string, format: string) => {
     return DateTime.fromFormat(date, format, { zone: 'utc' })
@@ -24,7 +19,7 @@ const Overview = () => {
     <div className="bg-slate-200 h-screen py-12 px-4 sm:px-6 lg:px-8 ">
       <div className="flex justify-center items-center flex-col p-5">
         {' '}
-        {allEvents.map((el) => (
+        {allEvents.map((el: any) => (
           <div
             key={el}
             className="overflow-hidden bg-white drop-shadow-lg sm:rounded-lg w-full mb-2 "
@@ -61,7 +56,7 @@ const Overview = () => {
           openModal={openModal}
           setOpenModal={setOpenModal}
           allEvents={allEvents}
-          setAllEvents={setAllEvents}
+          setNewEvent={setNewEvent}
         />
       </div>
     </div>
