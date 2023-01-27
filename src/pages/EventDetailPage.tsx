@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEventStore } from '../state/events';
 
 function EventDetailPage() {
   const [singleEventDetails, setSingleEventDetails] = useState<any>();
   const { id } = useParams();
   const allEvents = useEventStore((state: any) => state.events);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(allEvents);
@@ -20,10 +21,30 @@ function EventDetailPage() {
       <div className="overflow-hidden bg-white drop-shadow-lg sm:rounded-lg w-6/12 h-auto p-5 text-lg font-mediumleading-6 text-gray-900 ">
         {singleEventDetails && (
           <div>
-            <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
-              <h3 className="text-lg  leading-6 text-gray-900">
+            <div className="flex justify-between px-4 py-5 sm:px-6 border-b border-gray-200">
+              <h3 className="text-xl font-semibold leading-6 text-gray-900">
                 Event Details
               </h3>
+              <button
+                onClick={() => navigate('/')}
+                className="w-2/12 h-full p-1 flex border-2 border-indigo justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+                  />
+                </svg>
+                Go Back
+              </button>
             </div>
             <div className="flex  p-1  mt-4">
               <div>Season : {singleEventDetails.season} </div>
