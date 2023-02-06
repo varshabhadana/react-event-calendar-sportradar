@@ -17,8 +17,8 @@ const Overview = () => {
   };
 
   return (
-    <div className=" flex justify-evenly bg-slate-200 h-screen py-12 px-4 sm:px-6 lg:px-8 ">
-      <div className="flex justify-center items-center flex-col p-5 sm:p-0 lg:p-12  w-full">
+    <div className=" flex  justify-evenly bg-slate-200 h-screen py-12 px-4  lg:px-8 ">
+      <div className="flex justify-center items-center flex-col p-5 sm:p-0 lg:p-12  w-full ">
         {' '}
         {allEvents.map((el: any) => (
           <div
@@ -57,7 +57,10 @@ const Overview = () => {
           setNewEvent={setNewEvent}
         />
       </div>
-      <div className="bg-white p-5 h-full w-full">
+      <div
+        className="bg-white p-5 h-full w-full
+      "
+      >
         <CalenderView setOpenModal={setOpenModal} />
       </div>
     </div>

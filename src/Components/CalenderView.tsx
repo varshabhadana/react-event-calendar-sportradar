@@ -24,7 +24,7 @@ const CalenderView = (props: Props) => {
         events={event}
         startAccessor="start"
         endAccessor="end"
-        onSelectSlot={(event) => console.log(event)}
+        onSelectSlot={(event) => props.setOpenModal(true)}
         selectable
       />
     </div>

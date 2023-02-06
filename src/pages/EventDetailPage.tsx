@@ -9,10 +9,8 @@ function EventDetailPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(allEvents);
-    console.log(id);
     const singleEvent = allEvents.find((el: any) => el.id === id);
-    console.log(singleEvent);
+
     setSingleEventDetails(singleEvent);
   }, [id]);
 
@@ -62,15 +60,15 @@ function EventDetailPage() {
               <div className="flex flex-col ml-3 p-1 mb-4 ">
                 <div>Name: {singleEventDetails.homeTeam?.name}</div>
                 <div>
-                  Official Name: {singleEventDetails.homeTeam.officialName}
+                  Official Name: {singleEventDetails.homeTeam?.officialName}
                 </div>
                 <div>
-                  Abbreviation: {singleEventDetails.homeTeam.abbreviation}
+                  Abbreviation: {singleEventDetails.homeTeam?.abbreviation}
                 </div>
-                <div>Slug: {singleEventDetails.homeTeam.slug}</div>
+                <div>Slug: {singleEventDetails.homeTeam?.slug}</div>
                 <div>
                   Team Country Code:{' '}
-                  {singleEventDetails.homeTeam.teamCountryCode}
+                  {singleEventDetails.homeTeam?.teamCountryCode}
                 </div>
               </div>
             </div>
